@@ -12,7 +12,7 @@ RUN		apt-get update -qq && apt-get install -qqy \
 
 RUN		git clone https://github.com/wolf9466/cpuminer-multi
 
-RUN		cd cpuminer-multi && ./autogen.sh && ./configure CFLAGS="-O3" && make
+RUN		cd cpuminer-multi && ./autogen.sh && CFLAGS="-O3" ./configure --disable-aes-ni && make
 
 WORKDIR		/cpuminer-multi
 ENTRYPOINT	["./minerd"]
